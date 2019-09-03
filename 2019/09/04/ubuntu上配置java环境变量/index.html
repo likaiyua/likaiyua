@@ -5,16 +5,20 @@
   
 
   
-  <title>newpapername | Hexo</title>
+  <title>ubuntu上配置java环境变量 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="newpapername">
-<meta property="og:url" content="http://yoursite.com/2019/09/04/newpapername/index.html">
+  <meta name="description" content="找到环境变量，管理员权限打开编辑1sudo vim ~/.bashrc  在末尾加上12345#set oracle jdk environmentexport JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181 #修改为你的jdk解压缩目录export JRE_HOME=$&amp;#123;JAVA_HOME&amp;#125;/jre  export CLASSPATH=.:$&amp;#123">
+<meta name="keywords" content="java ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu上配置java环境变量">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/ubuntu上配置java环境变量/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="找到环境变量，管理员权限打开编辑1sudo vim ~/.bashrc  在末尾加上12345#set oracle jdk environmentexport JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181 #修改为你的jdk解压缩目录export JRE_HOME=$&amp;#123;JAVA_HOME&amp;#125;/jre  export CLASSPATH=.:$&amp;#123">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-03T22:13:35.615Z">
+<meta property="og:updated_time" content="2019-09-03T23:09:06.435Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="newpapername">
+<meta name="twitter:title" content="ubuntu上配置java环境变量">
+<meta name="twitter:description" content="找到环境变量，管理员权限打开编辑1sudo vim ~/.bashrc  在末尾加上12345#set oracle jdk environmentexport JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181 #修改为你的jdk解压缩目录export JRE_HOME=$&amp;#123;JAVA_HOME&amp;#125;/jre  export CLASSPATH=.:$&amp;#123">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -61,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-newpapername" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ubuntu上配置java环境变量" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/09/04/newpapername/" class="article-date">
-  <time datetime="2019-09-03T22:13:35.000Z" itemprop="datePublished">2019-09-04</time>
+    <a href="/2019/09/04/ubuntu上配置java环境变量/" class="article-date">
+  <time datetime="2019-09-03T23:08:37.000Z" itemprop="datePublished">2019-09-04</time>
 </a>
     
   </div>
@@ -75,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      newpapername
+      ubuntu上配置java环境变量
     </h1>
   
 
@@ -83,32 +87,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="找到环境变量，管理员权限打开编辑"><a href="#找到环境变量，管理员权限打开编辑" class="headerlink" title="找到环境变量，管理员权限打开编辑"></a>找到环境变量，管理员权限打开编辑</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h4 id="在末尾加上"><a href="#在末尾加上" class="headerlink" title="在末尾加上"></a>在末尾加上</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#set oracle jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181 #修改为你的jdk解压缩目录</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<h4 id="刷新环境变量使其生效"><a href="#刷新环境变量使其生效" class="headerlink" title="刷新环境变量使其生效"></a>刷新环境变量使其生效</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/04/newpapername/" data-id="ck04g3p06000140rqurwf7fjm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/04/ubuntu上配置java环境变量/" data-id="ck04g3p08000340rq3qgj1vn2" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java-ubuntu/">java ubuntu</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2019/09/04/redis的常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/09/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/09/04/redis的常用命令/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>

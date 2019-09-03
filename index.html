@@ -62,6 +62,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ubuntu上配置java环境变量" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/04/ubuntu上配置java环境变量/" class="article-date">
+  <time datetime="2019-09-03T23:08:37.000Z" itemprop="datePublished">2019-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/04/ubuntu上配置java环境变量/">ubuntu上配置java环境变量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="找到环境变量，管理员权限打开编辑"><a href="#找到环境变量，管理员权限打开编辑" class="headerlink" title="找到环境变量，管理员权限打开编辑"></a>找到环境变量，管理员权限打开编辑</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h4 id="在末尾加上"><a href="#在末尾加上" class="headerlink" title="在末尾加上"></a>在末尾加上</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#set oracle jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181 #修改为你的jdk解压缩目录</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<h4 id="刷新环境变量使其生效"><a href="#刷新环境变量使其生效" class="headerlink" title="刷新环境变量使其生效"></a>刷新环境变量使其生效</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/04/ubuntu上配置java环境变量/" data-id="ck04g3p08000340rq3qgj1vn2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java-ubuntu/">java ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-redis的常用命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/09/04/redis的常用命令/" class="article-date">
@@ -103,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/04/redis的常用命令/" data-id="ck04fzwgh0002ufrq9kgml86p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/04/redis的常用命令/" data-id="ck04g3p07000240rqkh4kt3k7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -139,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/04/newpapername/" data-id="ck04fzwgf0001ufrq9iztyzwa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/04/newpapername/" data-id="ck04g3p06000140rqurwf7fjm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/04/hello-world/" data-id="ck04fzwgc0000ufrqpo903y5o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/04/hello-world/" data-id="ck04g3p02000040rqlannmsxw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -208,9 +250,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-ubuntu/">java ubuntu</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/java-ubuntu/" style="font-size: 10px;">java ubuntu</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -227,6 +283,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/09/04/ubuntu上配置java环境变量/">ubuntu上配置java环境变量</a>
+          </li>
         
           <li>
             <a href="/2019/09/04/redis的常用命令/">(no title)</a>
