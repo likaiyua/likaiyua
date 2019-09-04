@@ -3,14 +3,16 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>LKY</title>
 
   
-  <meta name="author" content="John Doe">
+  <meta name="author" content="LiKaiyu">
   
 
   
 
+  
+  <meta name="keywords" content="JAVA">
   
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -19,14 +21,14 @@
 
   
 
-  <meta property="og:site_name" content="Hexo">
+  <meta property="og:site_name" content="LKY">
 
   
   <meta property="og:image" content="/favicon.ico">
   
 
   <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="LKY" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
 </head>
 
@@ -38,7 +40,7 @@
     <header>
   <div class="site-branding">
     <h1 class="site-title">
-      <a href="/">Hexo</a>
+      <a href="/">LKY</a>
     </h1>
     <p class="site-description"></p>
   </div>
@@ -79,19 +81,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <blockquote>
-<p>编写和维护接口文档是每个程序员的职责使用Swagger2可以快速帮助我们编写最新的API接口文档，再也不用担心开会前仍忙于整理各种资料了，间接提升了团队开发的沟通效率。常用注解swagger通过注解表明该接口会生成文档，包括接口名、请求方法、参数、返回信息的等等。    </p>
-</blockquote>
-<p>swagger2官网 <a href="https://swagger.io/" target="_blank" rel="noopener">https://swagger.io/</a></p>
-<p>所需jar包在maven中央仓库<br>Springfox-Swagger2  <a href="http://mvnrepository.com/artifact/io.springfox/springfox-swagger2" target="_blank" rel="noopener">http://mvnrepository.com/artifact/io.springfox/springfox-swagger2</a><br>springfox-swagger-ui <a href="http://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui" target="_blank" rel="noopener">http://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui</a></p>
-<p>maven配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在springboot项目中创建配置类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.map1701.mall.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.PathSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiInfo;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span>  自定义的配置类</span><br><span class="line"><span class="meta">@EnableSwagger</span>2 启用swagger2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2Config</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * swagger2 启动后，通过createRestApi函数创建Docket的Bean，</span></span><br><span class="line"><span class="comment">     * apiInfo() 用来创建该Api的基本信息（这些基本信息会展现在文档页面中）。</span></span><br><span class="line"><span class="comment">     * select() 函数返回一个ApiSelectorBuilder实例用来控制哪些接口暴露给Swagger来展现，</span></span><br><span class="line"><span class="comment">     * 本例采用指定扫描的包路径来定义，Swagger会扫描该包下所有Controller定义的API，并产生文档内容（除了被<span class="doctag">@ApiIgnore</span>指定的请求）。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Docket docket = <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                <span class="comment">//指定API在哪个包下,不指定的不会被扫描到</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.map1701.mall.controller"</span>))</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> docket;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                .title(<span class="string">"商城购物车API文档"</span>)  <span class="comment">//标题</span></span><br><span class="line">                .description(<span class="string">"答辩项目作业文档"</span>) <span class="comment">//描述说明</span></span><br><span class="line">                .version(<span class="string">"1.0"</span>)  <span class="comment">//版本</span></span><br><span class="line">                .build();  <span class="comment">//构建</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行项目,打开地址 <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a> 就可以看到API文档了</p>
-
+        <p><strong>编写和维护接口文档是每个程序员的职责使用Swagger2可以快速帮助我们编写最新的API接口文档，再也不用担心开会前仍忙于整理各种资料了，间接提升了团队开发的沟通效率。常用注解swagger通过注解表明该接口会生成文档，包括接口名、请求方法、参数、返回信息的等等。</strong>    </p>
       
     </div>
 
@@ -100,6 +90,13 @@
   <div class="article-footer">
     <div class="article-meta pull-left">
 
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/java/">java</a>
+    </span>
     
 
     
@@ -143,65 +140,17 @@
   <div class="article-content">
     <div class="entry">
       
-        <p><strong>因为使用的<code>nodejs</code>环境，所以在使用hexo之前先安装<code>nodejs</code>和<code>npm</code></strong></p>
-<h3 id="一、配置SSH"><a href="#一、配置SSH" class="headerlink" title="一、配置SSH"></a>一、配置SSH</h3><p>​        为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -C "你github的邮箱地址"</span><br></pre></td></tr></table></figure>
-
-<p>执行上面的命令之后，会在～目录下生产一个.ssh的隐藏文件夹，<code>cd</code>进去</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure>
-
-<p>找到<code>id_rsa.pub</code>文件，用编辑器打开复制里面的秘钥</p>
-<p>登录github找到设置添加一个新的ssh链接秘钥，将刚才复制的内容填上去</p>
-<p>验证是否添加成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<p>**如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，看到这段提示则代表SSH配置成功成功</p>
-<blockquote>
-<p>Hi xxx(你的用户名)! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
-</blockquote>
-<p>继续配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git config --global user.name "liuxianan"// 你的github用户名，非昵称</span><br><span class="line"><span class="meta">$</span> git config --global user.email  "xxx@qq.com"// 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、配置github仓库"><a href="#二、配置github仓库" class="headerlink" title="二、配置github仓库"></a>二、配置github仓库</h3><p>登录github，新建一个仓库，仓库的名字取名为xxx.github.io（xxx是你的github名字）</p>
-<p>复制ssh链接地址</p>
-<h3 id="三、安装hexo"><a href="#三、安装hexo" class="headerlink" title="三、安装hexo"></a>三、安装hexo</h3><p>如果没有安装git则先安装git</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> apt-get  install git</span><br></pre></td></tr></table></figure>
-
-<p>安装hexo</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>安装完成之后，<code>新建</code>一个文件夹,然后<code>进入</code>到这个文件夹，文件夹的名字随便取，我这里取的是myblog</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd ~</span><br><span class="line"><span class="meta">$</span> mkdir myblog</span><br><span class="line"><span class="meta">$</span> cd myblog</span><br></pre></td></tr></table></figure>
-
-<p>初始化</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hexo init</span><br></pre></td></tr></table></figure>
-
-<p>初始化后就会出现一些默认的文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">drwxrwxrwx   8 likaiyu likaiyu   4096 9月   4 07:09 ./</span><br><span class="line">drwxr-xr-x  37 likaiyu likaiyu   4096 9月   4 06:24 ../</span><br><span class="line">-rwxrwxrwx   1 root    root      1850 9月   4 06:27 _config.yml*</span><br><span class="line">-rw-r--r--   1 likaiyu likaiyu  46393 9月   4 07:10 db.json</span><br><span class="line">drwxrwxrwx   9 likaiyu likaiyu   4096 9月   4 07:09 .deploy_git/</span><br><span class="line">-rwxrwxrwx   1 root    root        65 9月   4 05:46 .gitignore*</span><br><span class="line">drwxrwxrwx 281 likaiyu likaiyu  12288 9月   4 06:00 node_modules/</span><br><span class="line">-rwxrwxrwx   1 root    root       483 9月   4 06:00 package.json*</span><br><span class="line">-rwxrwxrwx   1 likaiyu likaiyu 120271 9月   4 06:00 package-lock.json*</span><br><span class="line">drwxr-xr-x   8 likaiyu likaiyu   4096 9月   4 07:09 public/</span><br><span class="line">drwxrwxrwx   2 root    root      4096 9月   4 05:46 scaffolds/</span><br><span class="line">drwxrwxrwx   3 root    root      4096 9月   4 05:46 source/</span><br><span class="line">drwxrwxrwx   3 root    root      4096 9月   4 05:46 themes/</span><br></pre></td></tr></table></figure>
-
-<p>执行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hexo g --生成静态文件</span><br><span class="line"><span class="meta">$</span> hexo s --启动本机服务预览</span><br></pre></td></tr></table></figure>
-
-<p>执行以上命令后打开浏览器，在地址栏中输入<code>localhost:4000</code>，就能看到hexo默认模板的首页了</p>
-<h3 id="四、写文章"><a href="#四、写文章" class="headerlink" title="四、写文章"></a>四、写文章</h3><p>先创建一篇文章</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hexo new '文章名'</span><br></pre></td></tr></table></figure>
-
-<p>上面执行命令后会提示</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO  Created: ~/myblog/source/_posts/文章名.md</span><br></pre></td></tr></table></figure>
-
-<p>意思是文章模板生成在了<code>~/myblog/source/_posts/</code>文件夹下，这个文件就是这篇文章的内容</p>
-<p>写完之后使用命令就可以生成静态的html文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hexo g</span><br></pre></td></tr></table></figure>
-
-<h3 id="五、部署"><a href="#五、部署" class="headerlink" title="五、部署"></a>五、部署</h3><p><strong>在部署到githb之前还要配置一下<code>git</code>的地址</strong></p>
-<p>打开hexo目录下的<code>——config.yml</code>文件，找到最后一行，修改为(xxx是你的账户名)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:xxx/xxx.github.io.git </span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>配置好后,执行下面命令就就可以部署到github上了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-
-<p>稍等一会登录你的首页<code>xxx.github.io</code>就可以看到这篇文章了</p>
-
+        <h3 id="用hexo的好处："><a href="#用hexo的好处：" class="headerlink" title="用hexo的好处："></a>用hexo的好处：</h3><ul>
+<li><p>Node.js为您带来令人难以置信的生成速度。数百个文件只需几秒钟即可构建。</p>
+</li>
+<li><p>支持GitHub Flavored Markdown的所有功能。您甚至可以在Hexo中使用大多数Octopress插件。</p>
+</li>
+<li><p>您只需要一个命令即可将您的站点部署到GitHub Pages，Heroku或其他站点。</p>
+</li>
+<li><p>Hexo有一个强大的插件系统。您可以为Jade，CoffeeScript插件安装更多插件。</p>
+</li>
+</ul>
+<p><strong>因为hexo使用的是<code>nodejs</code>环境，所以在使用hexo之前先安装<code>nodejs</code>和<code>npm</code></strong></p>
       
     </div>
 
@@ -314,10 +263,6 @@
     <div class="entry">
       
         <h4 id="找到环境变量，管理员权限打开编辑"><a href="#找到环境变量，管理员权限打开编辑" class="headerlink" title="找到环境变量，管理员权限打开编辑"></a>找到环境变量，管理员权限打开编辑</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<h4 id="在末尾加上"><a href="#在末尾加上" class="headerlink" title="在末尾加上"></a>在末尾加上</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#set oracle jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181 #修改为你的jdk解压缩目录</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
-
-<h4 id="刷新环境变量使其生效"><a href="#刷新环境变量使其生效" class="headerlink" title="刷新环境变量使其生效"></a>刷新环境变量使其生效</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -326,6 +271,13 @@
   <div class="article-footer">
     <div class="article-meta pull-left">
 
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/linux/">linux</a>
+    </span>
     
 
     
@@ -358,7 +310,7 @@
     Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
     </br>
     
-    &copy; 2019 John Doe
+    &copy; 2019 LiKaiyu
     
   </p>
 </footer>
