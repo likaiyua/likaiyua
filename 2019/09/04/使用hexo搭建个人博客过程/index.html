@@ -5,15 +5,20 @@
   
 
   
-  <title>Hexo</title>
+  <title>使用hexo搭建个人博客过程 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="因为使用的nodejs环境，所以在使用hexo之前先安装nodejs和npm 一、配置SSH​        为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。 1$ ssh-keygen -t rsa -C &quot;你github的邮箱地址&quot;  执行上面的命令之后，会在～目录下生产一个.s">
+<meta name="keywords" content="-hexo -nodejs -linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用hexo搭建个人博客过程">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/使用hexo搭建个人博客过程/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="因为使用的nodejs环境，所以在使用hexo之前先安装nodejs和npm 一、配置SSH​        为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。 1$ ssh-keygen -t rsa -C &quot;你github的邮箱地址&quot;  执行上面的命令之后，会在～目录下生产一个.s">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-04T06:20:50.606Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="使用hexo搭建个人博客过程">
+<meta name="twitter:description" content="因为使用的nodejs环境，所以在使用hexo之前先安装nodejs和npm 一、配置SSH​        为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。 1$ ssh-keygen -t rsa -C &quot;你github的邮箱地址&quot;  执行上面的命令之后，会在～目录下生产一个.s">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-使用hexo搭建个人博客过程" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-使用hexo搭建个人博客过程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/09/04/使用hexo搭建个人博客过程/" class="article-date">
   <time datetime="2019-09-03T23:56:57.000Z" itemprop="datePublished">2019-09-04</time>
@@ -75,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/使用hexo搭建个人博客过程/">使用hexo搭建个人博客过程</a>
+    <h1 class="article-title" itemprop="name">
+      使用hexo搭建个人博客过程
     </h1>
   
 
@@ -154,189 +157,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-ubuntu上配置java环境变量" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/09/04/ubuntu上配置java环境变量/" class="article-date">
-  <time datetime="2019-09-03T23:08:37.000Z" itemprop="datePublished">2019-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/ubuntu上配置java环境变量/">ubuntu上配置java环境变量</a>
-    </h1>
+    <a href="/2019/09/04/ubuntu上配置java环境变量/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ubuntu上配置java环境变量</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="找到环境变量，管理员权限打开编辑"><a href="#找到环境变量，管理员权限打开编辑" class="headerlink" title="找到环境变量，管理员权限打开编辑"></a>找到环境变量，管理员权限打开编辑</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<h4 id="在末尾加上"><a href="#在末尾加上" class="headerlink" title="在末尾加上"></a>在末尾加上</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#set oracle jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181 #修改为你的jdk解压缩目录</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
-
-<h4 id="刷新环境变量使其生效"><a href="#刷新环境变量使其生效" class="headerlink" title="刷新环境变量使其生效"></a>刷新环境变量使其生效</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/04/ubuntu上配置java环境变量/" data-id="ck04ht0f70003lvrqz7wpkard" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java-ubuntu/">java ubuntu</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-redis的常用命令" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/09/04/redis的常用命令/" class="article-date">
-  <time datetime="2019-09-03T23:06:23.936Z" itemprop="datePublished">2019-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>string是redis最基本的数据类型，添加一个string的基本类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set mykey value</span><br><span class="line">mykey 是键 value是值</span><br></pre></td></tr></table></figure>
-
-<p>通过键取出值，，跟java的map类似</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">get mykey</span><br><span class="line"></span><br><span class="line">&quot;123&quot;</span><br></pre></td></tr></table></figure>
-
-<p>虽然是string类型，但是如果你的字符串是纯数字组成的，还可以用<code>incr</code>进行原子递增递减操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">incr mykey num --key对应的值会+num,如果不指定就是+1</span><br><span class="line"></span><br><span class="line">get mykey </span><br><span class="line"></span><br><span class="line">&quot;124&quot;</span><br></pre></td></tr></table></figure>
-
-<p>如果值里面包含有非数字的内容，就会报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set testkey a</span><br><span class="line"></span><br><span class="line">incr testkey</span><br><span class="line"></span><br><span class="line">(error) ERR value is not an integer or out of range</span><br></pre></td></tr></table></figure>
-
-<p>也可以一次存储或获取多个key对应的值，使用MSET和MGET命令:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mset a 10 b 20</span><br><span class="line"></span><br><span class="line">mget a b</span><br><span class="line"></span><br><span class="line">&quot;10&quot;</span><br><span class="line">&quot;20&quot;</span><br></pre></td></tr></table></figure>
-
-<p>有时候需要确定一个键是否存在与结构中，就需要用到exists</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exists key</span><br><span class="line"></span><br><span class="line">如果存在就会返回1，不存在则返回0</span><br></pre></td></tr></table></figure>
-
-<p>type命令来确定一个键对应的值的类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set key aaa</span><br><span class="line">type key</span><br><span class="line">&quot;string&quot;</span><br></pre></td></tr></table></figure>
-
-<p>expire命令来设置数据存在时间,超过设置的时间就会被自动清除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">set key aaa</span><br><span class="line"></span><br><span class="line">expire key 5(单位 秒)</span><br><span class="line"></span><br><span class="line">get key (创建数据后的五秒内)</span><br><span class="line"></span><br><span class="line">&quot;aaa&quot;</span><br><span class="line"></span><br><span class="line">get key (创建数据的五秒后)</span><br><span class="line"></span><br><span class="line">(nil)</span><br><span class="line"></span><br><span class="line">也可以在创建的时候指定存活时间</span><br><span class="line">set key aaa ex 5</span><br></pre></td></tr></table></figure>
-
-<p>清除超时时间用<code>persist</code>,查看数据剩余存活时间用ttl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ttl key</span><br><span class="line">    --如果为负数就代表永久存在</span><br><span class="line">    --正数就是存活的秒数</span><br><span class="line"></span><br><span class="line">persist key --清除超时时间，让数据永久保存</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/04/redis的常用命令/" data-id="ck04ht0f60002lvrq9nx4bb3b" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-newpapername" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/09/04/newpapername/" class="article-date">
-  <time datetime="2019-09-03T22:13:35.000Z" itemprop="datePublished">2019-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/newpapername/">newpapername</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/04/newpapername/" data-id="ck04ht0f50001lvrq8zgwono2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/09/04/hello-world/" class="article-date">
-  <time datetime="2019-09-03T21:46:18.824Z" itemprop="datePublished">2019-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/04/hello-world/" data-id="ck04ht0f20000lvrq1yipunyd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
