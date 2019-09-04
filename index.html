@@ -255,30 +255,6 @@
       
         <p>string是redis最基本的数据类型，添加一个string的基本类型</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set mykey value</span><br><span class="line">mykey 是键 value是值</span><br></pre></td></tr></table></figure>
-
-<p>通过键取出值，，跟java的map类似</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">get mykey</span><br><span class="line"></span><br><span class="line">&quot;123&quot;</span><br></pre></td></tr></table></figure>
-
-<p>虽然是string类型，但是如果你的字符串是纯数字组成的，还可以用<code>incr</code>进行原子递增递减操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">incr mykey num --key对应的值会+num,如果不指定就是+1</span><br><span class="line"></span><br><span class="line">get mykey </span><br><span class="line"></span><br><span class="line">&quot;124&quot;</span><br></pre></td></tr></table></figure>
-
-<p>如果值里面包含有非数字的内容，就会报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set testkey a</span><br><span class="line"></span><br><span class="line">incr testkey</span><br><span class="line"></span><br><span class="line">(error) ERR value is not an integer or out of range</span><br></pre></td></tr></table></figure>
-
-<p>也可以一次存储或获取多个key对应的值，使用MSET和MGET命令:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mset a 10 b 20</span><br><span class="line"></span><br><span class="line">mget a b</span><br><span class="line"></span><br><span class="line">&quot;10&quot;</span><br><span class="line">&quot;20&quot;</span><br></pre></td></tr></table></figure>
-
-<p>有时候需要确定一个键是否存在与结构中，就需要用到exists</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exists key</span><br><span class="line"></span><br><span class="line">如果存在就会返回1，不存在则返回0</span><br></pre></td></tr></table></figure>
-
-<p>type命令来确定一个键对应的值的类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set key aaa</span><br><span class="line">type key</span><br><span class="line">&quot;string&quot;</span><br></pre></td></tr></table></figure>
-
-<p>expire命令来设置数据存在时间,超过设置的时间就会被自动清除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">set key aaa</span><br><span class="line"></span><br><span class="line">expire key 5(单位 秒)</span><br><span class="line"></span><br><span class="line">get key (创建数据后的五秒内)</span><br><span class="line"></span><br><span class="line">&quot;aaa&quot;</span><br><span class="line"></span><br><span class="line">get key (创建数据的五秒后)</span><br><span class="line"></span><br><span class="line">(nil)</span><br><span class="line"></span><br><span class="line">也可以在创建的时候指定存活时间</span><br><span class="line">set key aaa ex 5</span><br></pre></td></tr></table></figure>
-
-<p>清除超时时间用<code>persist</code>,查看数据剩余存活时间用ttl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ttl key</span><br><span class="line">    --如果为负数就代表永久存在</span><br><span class="line">    --正数就是存活的秒数</span><br><span class="line"></span><br><span class="line">persist key --清除超时时间，让数据永久保存</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -287,6 +263,13 @@
   <div class="article-footer">
     <div class="article-meta pull-left">
 
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/redis/">redis</a>
+    </span>
     
 
     
