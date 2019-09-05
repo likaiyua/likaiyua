@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>linux下安装字体 | LKY</title>
+
+  
+  <meta name="author" content="LiKaiyu">
+  
+
+  
+  <meta name="description" content="首先将你要安装的字体文件夹复制到user/share/fonts下1sudo cp -r /xx/xx/win-font /usr/share/fonts/">
+  
+
+  
+  <meta name="keywords" content="JAVA">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="linux下安装字体">
+
+  <meta property="og:site_name" content="LKY">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="LKY" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">LKY</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>linux下安装字体</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/09/05/linux下安装字体/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-09-05T01:53:49.000Z">
+          2019-09-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h4 id="首先将你要安装的字体文件夹复制到user-share-fonts下"><a href="#首先将你要安装的字体文件夹复制到user-share-fonts下" class="headerlink" title="首先将你要安装的字体文件夹复制到user/share/fonts下"></a>首先将你要安装的字体文件夹复制到<code>user/share/fonts下</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -r /xx/xx/win-font /usr/share/fonts/</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="然后依次执行下面三条命令"><a href="#然后依次执行下面三条命令" class="headerlink" title="然后依次执行下面三条命令"></a>然后依次执行下面三条命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfontscale</span><br><span class="line">sudo mkfontdir</span><br><span class="line">sudo fc-cache -fv</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第三条命令会等待一会，耐心等待执行完毕就可以了</p>
+</blockquote>
+<h4 id="最后如果成功了会有一个success的提示"><a href="#最后如果成功了会有一个success的提示" class="headerlink" title="最后如果成功了会有一个success的提示"></a>最后如果成功了会有一个<code>success</code>的提示</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-cache: succeeded</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/linux/">linux</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 LiKaiyu
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
