@@ -61,6 +61,128 @@
 
   
     
+    <h3 class="article-title"><a href="/2019/09/05/解决执行docker命令没有权限/"><span>解决执行docker命令没有权限</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/09/05/解决执行docker命令没有权限/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-09-05T03:39:00.000Z">
+          2019-09-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>执行docker info的时候报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.39/info: dial unix /var/run/docker.sock: connect: permission denied</span><br></pre></td></tr></table></figure>
+
+<p>错误原因：<br>docker守护进程启动的时候，会默认赋予名字为docker的用户组读写Unix socket的权限，因此只要创建docker用户组，并将当前用户加入到docker用户组中，那么当前用户就有权限访问Unix socket了，进而也就可以执行docker相关命令</p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/linux/">linux</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/docker/">docker</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2019/09/05/mysql设置编码为utf8/"><span>mysql设置编码为utf8</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/09/05/mysql设置编码为utf8/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-09-05T03:37:00.000Z">
+          2019-09-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>mysql安装成功后默认编码为latin1<br>创建数据库的时候如果不指定编码则插入中文内容时会报错<br>所以需要修改mysql的默认编码为utf8</p>
+<p>具体操作如下</p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/SQL/">SQL</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/mysql/">mysql</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2019/09/05/linux下安装字体/"><span>linux下安装字体</span></a></h3>
     
   

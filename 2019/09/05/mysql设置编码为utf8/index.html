@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>mysql设置编码为utf8 | LKY</title>
+
+  
+  <meta name="author" content="LiKaiyu">
+  
+
+  
+  <meta name="description" content="mysql安装成功后默认编码为latin1创建数据库的时候如果不指定编码则插入中文内容时会报错所以需要修改mysql的默认编码为utf8
+具体操作如下">
+  
+
+  
+  <meta name="keywords" content="JAVA">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="mysql设置编码为utf8">
+
+  <meta property="og:site_name" content="LKY">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="LKY" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">LKY</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>mysql设置编码为utf8</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/09/05/mysql设置编码为utf8/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-09-05T03:37:00.000Z">
+          2019-09-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>mysql安装成功后默认编码为latin1<br>创建数据库的时候如果不指定编码则插入中文内容时会报错<br>所以需要修改mysql的默认编码为utf8</p>
+<p>具体操作如下</p>
+<a id="more"></a>
+<p>首先登录进去mysql执行  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like ‘%char%’；</span><br></pre></td></tr></table></figure>
+
+<p>就可以看到自己的默认编码，应该是如下图所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+--------------------------+----------------------------+</span><br><span class="line">| Variable_name            | Value                      |</span><br><span class="line">+--------------------------+----------------------------+</span><br><span class="line">| character_set_client     | utf8                       |</span><br><span class="line">| character_set_connection | utf8                       |</span><br><span class="line">| character_set_database   | latin1                     |</span><br><span class="line">| character_set_filesystem | binary                     |</span><br><span class="line">| character_set_results    | utf8                       |</span><br><span class="line">| character_set_server     | latin1                     |</span><br><span class="line">| character_set_system     | utf8                       |</span><br><span class="line">| character_sets_dir       | /usr/share/mysql/charsets/ |</span><br><span class="line">+--------------------------+----------------------------+</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>exit</code>退出</p>
+<p>找到  <code>/etc/mysql/my.cnf</code> 文件 使用命令 <code>sudo vim /etc/mysql/cnf</code>修改该文件<br>添加下面内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line">[mysqld]</span><br><span class="line">default-storage-engine=INNODB</span><br><span class="line">character-set-server=utf8</span><br><span class="line">collation-server=utf8_general_ci</span><br></pre></td></tr></table></figure>
+
+<p>然后重启mysql服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql restart</span><br></pre></td></tr></table></figure>
+
+<p>登录进去mysq，重新执行<code>show variables like ‘%char%’；</code>查看编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+--------------------------+----------------------------+</span><br><span class="line">| Variable_name            | Value                      |</span><br><span class="line">+--------------------------+----------------------------+</span><br><span class="line">| character_set_client     | utf8                       |</span><br><span class="line">| character_set_connection | utf8                       |</span><br><span class="line">| character_set_database   | utf8                       |</span><br><span class="line">| character_set_filesystem | binary                     |</span><br><span class="line">| character_set_results    | utf8                       |</span><br><span class="line">| character_set_server     | utf8                       |</span><br><span class="line">| character_set_system     | utf8                       |</span><br><span class="line">| character_sets_dir       | /usr/share/mysql/charsets/ |</span><br><span class="line">+--------------------------+----------------------------+</span><br></pre></td></tr></table></figure>
+
+<p>可以看到修改成功</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/SQL/">SQL</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/mysql/">mysql</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 LiKaiyu
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
