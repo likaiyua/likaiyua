@@ -99,7 +99,7 @@
 <p>创建对象的时候会进行一个判断</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var ajax;</span><br><span class="line"></span><br><span class="line">if(window.XMLHttpRequest)&#123;</span><br><span class="line">    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码</span><br><span class="line">    ajax = new XMLHttpRequest();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    //IE5，IE6</span><br><span class="line">    ajax = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="将请求发送到服务器，需要两个方法"><a href="#将请求发送到服务器，需要两个方法" class="headerlink" title="将请求发送到服务器，需要两个方法"></a>将请求发送到服务器，需要两个方法</h4><table>
+<h4 id="对象创建后，将请求发送到服务器，需要调用两个方法"><a href="#对象创建后，将请求发送到服务器，需要调用两个方法" class="headerlink" title="对象创建后，将请求发送到服务器，需要调用两个方法"></a>对象创建后，将请求发送到服务器，需要调用两个方法</h4><table>
 <thead>
 <tr>
 <th align="left">方法</th>
@@ -115,7 +115,7 @@
 <td align="left">发送请求</td>
 </tr>
 </tbody></table>
-<p>如果async设置的为true，则需要设置一个就绪状态时执行的一个函数 </p>
+<p>如果async设置的为true即发送异步请求，则需要设置一个就绪状态时执行的一个函数 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ajax.onreadystatechange = function() &#123;</span><br><span class="line">    </span><br><span class="line">    if(ajax.readyState == 4 &amp;&amp; ajax.state == 200)&#123;</span><br><span class="line">        </span><br><span class="line">        //获取响应数据</span><br><span class="line">        var json =  ajax.responseText;</span><br><span class="line">        </span><br><span class="line">        //在控制台上将返回结果打印出来</span><br><span class="line">        console.log(json);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ajax.open(method,url,async);</span><br></pre></td></tr></table></figure>
 
 <p>如果async设置为了false，发送同步请求，不用编写onreadystatechange函数</p>
