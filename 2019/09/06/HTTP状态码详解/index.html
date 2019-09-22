@@ -1,96 +1,155 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
   
-  <title>HTTP状态码详解 | LKY</title>
-
+    <link rel="shortcut icon" href="/css/images/logo.png">
   
-  <meta name="author" content="LiKaiyu">
+  <title>
+    
+      HTTP状态码详解 | LKY
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
   
 
-  
-  <meta name="description" content="1xx:信息响应类，表示接收到请求并且继续处理  
 
-2xx:处理成功响应类，表示动作被成功接收、理解和接受  
-
-3xx:重定向响应类，为了完成指定的动作，必须接受进一步处理  
-
-4xx:客户端错误，客户请求包含语法错误或者是不能正确执行  
-
-5xx:服务端错误，服务器不能正确执行一个正确的请求">
-  
-
-  
-  <meta name="keywords" content="JAVA">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="HTTP状态码详解">
-
-  <meta property="og:site_name" content="LKY">
-
-  
-  <meta property="og:image" content="/favicon.ico">
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="LKY" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
 </head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
 
-
-<body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">LKY</a>
-    </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>LKY</span>
+    </a>
+    <ul class="right-list">
       
-        <li><a href="/">Home</a></li>
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目地址</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
       
     </ul>
-  </nav>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目地址</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 </header>
 
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>HTTP状态码详解</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/06/HTTP状态码详解/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-06T00:41:00.000Z">
-          2019-09-06
-        </time>
-      </a>
-    </span>
+    <div id="article-banner">
+  <h2>HTTP状态码详解</h2>
+  <p class="post-date">2019-09-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
   </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <ul>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><ul>
 <li><p>1xx:信息响应类，表示接收到请求并且继续处理  </p>
 </li>
 <li><p>2xx:处理成功响应类，表示动作被成功接收、理解和接受  </p>
@@ -281,47 +340,200 @@
 <td align="center">服务器不支持或拒绝支请求头中指定的HTTP版本</td>
 </tr>
 </tbody></table>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#http" >
+    <span class="tag-code">http</span>
+  </a>
 
-      
-    </div>
-
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/09/06/vue的组件化/">
+        <span class="nav-arrow">← </span>
+        
+          ubuntu18.04一些常用软件
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/09/06/使用javascript发送ajax请求/">
+        
+          使用javascript发送ajax请求
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
   </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
+    <!-- NAV END -->
+    <!-- 打赏 START -->
     
-
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
     
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/http/">http</a>
-    </span>
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
     
-
-    </div>
-
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="nav">none</ol>
     
   </div>
-</article>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/09/06/HTTP状态码详解/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
 
 
-    </main>
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2019 LiKaiyu
-    
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
   </p>
 </footer>
-    
-  </div>
-</div>
-</body>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
 </html>

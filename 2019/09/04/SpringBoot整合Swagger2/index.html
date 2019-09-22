@@ -1,88 +1,155 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
   
-  <title>SpringBoot整合Swagger2 | LKY</title>
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      SpringBoot整合Swagger2 | LKY
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
-  
-  <meta name="author" content="LiKaiyu">
-  
-
-  
-  <meta name="description" content="编写和维护接口文档是每个程序员的职责使用Swagger2可以快速帮助我们编写最新的API接口文档，再也不用担心开会前仍忙于整理各种资料了，间接提升了团队开发的沟通效率。常用注解swagger通过注解表明该接口会生成文档，包括接口名、请求方法、参数、返回信息的等等。">
-  
-
-  
-  <meta name="keywords" content="JAVA">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="SpringBoot整合Swagger2">
-
-  <meta property="og:site_name" content="LKY">
-
-  
-  <meta property="og:image" content="/favicon.ico">
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
   
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="LKY" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
 </head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
 
-
-<body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">LKY</a>
-    </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>LKY</span>
+    </a>
+    <ul class="right-list">
       
-        <li><a href="/">Home</a></li>
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目地址</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
       
     </ul>
-  </nav>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目地址</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 </header>
 
-    <main class="site-main posts-loop">
-    <article>
-
-  
-    
-    <h3 class="article-title"><span>SpringBoot整合Swagger2</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/04/SpringBoot整合Swagger2/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-04T06:57:07.000Z">
-          2019-09-04
-        </time>
-      </a>
-    </span>
+    <div id="article-banner">
+  <h2>SpringBoot整合Swagger2</h2>
+  <p class="post-date">2019-09-04</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
   </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p><strong>编写和维护接口文档是每个程序员的职责使用Swagger2可以快速帮助我们编写最新的API接口文档，再也不用担心开会前仍忙于整理各种资料了，间接提升了团队开发的沟通效率。常用注解swagger通过注解表明该接口会生成文档，包括接口名、请求方法、参数、返回信息的等等。</strong>    </p>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p><strong>编写和维护接口文档是每个程序员的职责使用Swagger2可以快速帮助我们编写最新的API接口文档，再也不用担心开会前仍忙于整理各种资料了，间接提升了团队开发的沟通效率。常用注解swagger通过注解表明该接口会生成文档，包括接口名、请求方法、参数、返回信息的等等。</strong>    </p>
 <a id="more"></a>
 
 <p>swagger2官网 <a href="https://swagger.io/" target="_blank" rel="noopener">https://swagger.io/</a></p>
@@ -94,54 +161,204 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.map1701.mall.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.PathSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiInfo;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span>  自定义的配置类</span><br><span class="line"><span class="meta">@EnableSwagger</span>2 启用swagger2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2Config</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * swagger2 启动后，通过createRestApi函数创建Docket的Bean，</span></span><br><span class="line"><span class="comment">     * apiInfo() 用来创建该Api的基本信息（这些基本信息会展现在文档页面中）。</span></span><br><span class="line"><span class="comment">     * select() 函数返回一个ApiSelectorBuilder实例用来控制哪些接口暴露给Swagger来展现，</span></span><br><span class="line"><span class="comment">     * 本例采用指定扫描的包路径来定义，Swagger会扫描该包下所有Controller定义的API，并产生文档内容（除了被<span class="doctag">@ApiIgnore</span>指定的请求）。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Docket docket = <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                <span class="comment">//指定API在哪个包下,不指定的不会被扫描到</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.map1701.mall.controller"</span>))</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> docket;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                .title(<span class="string">"商城购物车API文档"</span>)  <span class="comment">//标题</span></span><br><span class="line">                .description(<span class="string">"答辩项目作业文档"</span>) <span class="comment">//描述说明</span></span><br><span class="line">                .version(<span class="string">"1.0"</span>)  <span class="comment">//版本</span></span><br><span class="line">                .build();  <span class="comment">//构建</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行项目,打开地址 <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a> 就可以看到API文档了</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#springboot" >
+    <span class="tag-code">springboot</span>
+  </a>
 
-      
-    </div>
+  <a href="/tags#swagger2" >
+    <span class="tag-code">swagger2</span>
+  </a>
 
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/09/04/使用hexo搭建个人博客过程/">
+        <span class="nav-arrow">← </span>
+        
+          使用hexo搭建个人博客过程
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/09/05/linux下安装字体/">
+        
+          linux下安装字体
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
   </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
+    <!-- NAV END -->
+    <!-- 打赏 START -->
     
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/java/">java</a>
-    </span>
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
     
-
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
     
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
     
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/springboot/">springboot</a><a href="/tags/swagger2/">swagger2</a>
-    </span>
+    <!-- 二维码 END -->
     
-
-    </div>
-
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="nav">none</ol>
     
   </div>
-</article>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/09/04/SpringBoot整合Swagger2/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
 
 
-    </main>
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2019 LiKaiyu
-    
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
   </p>
 </footer>
-    
-  </div>
-</div>
-</body>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
 </html>

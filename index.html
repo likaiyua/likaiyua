@@ -1,367 +1,303 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
   
-  <title>LKY</title>
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      LKY
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
-  
-  <meta name="author" content="LiKaiyu">
-  
-
-  
-
-  
-  <meta name="keywords" content="JAVA">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
   
 
-  <meta property="og:site_name" content="LKY">
 
-  
-  <meta property="og:image" content="/favicon.ico">
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="LKY" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
 </head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
 
-
-<body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">LKY</a>
-    </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>LKY</span>
+    </a>
+    <ul class="right-list">
       
-        <li><a href="/">Home</a></li>
+        <li class="list-item">
+          
+            <a href="/" class="item-link active">Home</a>
+          
+        </li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目地址</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
       
     </ul>
-  </nav>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link mobile-active">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目地址</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 </header>
 
-    <main class="site-main posts-loop">
-    
-  <article>
-
+    <main class="app-body">
   
-    
-    <h3 class="article-title"><a href="/2019/09/12/从spring学到的一些设计模式/"><span>从spring学到的一些设计模式</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/12/从spring学到的一些设计模式/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-11T16:31:00.000Z">
-          2019-09-12
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/22/java8新特性stream流的一些简单使用方式/">java8新特性stream流的一些简单使用方式</a>
+      </h2>
+      <p class="article-date">September 22, 2019</p>
       
-        <h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><p><strong>定义对象间的一种多对多依赖关系，当一个对象状态发生改变的时候，所以以来它的对象都得到及时的通知并被自动更新</strong></p>
+        
+  <a href="/tags#java" >
+    <span class="tag-code">java</span>
+  </a>
+
+  <a href="/tags#stream" >
+    <span class="tag-code">stream</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Stream 是用函数式编程方式在集合类上进行复杂操作的工具，其集成了Java 8中的众多新特性之一的聚合操作，开发者可以更容易地使用Lambda表达式，并且更方便地实现对集合的查找、遍历、过滤以及常见计算等。</p>
+        
+      </div>
+      <a class="more" href="/2019/09/22/java8新特性stream流的一些简单使用方式/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/12/从spring学到的一些设计模式/">从spring学到的一些设计模式</a>
+      </h2>
+      <p class="article-date">September 12, 2019</p>
+      
+        
+  <a href="/tags#spring" >
+    <span class="tag-code">spring</span>
+  </a>
+
+  <a href="/tags#设计模式" >
+    <span class="tag-code">设计模式</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><p><strong>定义对象间的一种多对多依赖关系，当一个对象状态发生改变的时候，所以以来它的对象都得到及时的通知并被自动更新</strong></p>
 <p><strong>又称： 发布/订阅、消息通知机制、事件监听、事件驱动编程</strong></p>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/JAVA/">JAVA</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/spring/">spring</a><a href="/tags/设计模式/">设计模式</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
+        
+      </div>
+      <a class="more" href="/2019/09/12/从spring学到的一些设计模式/">Read more</a>
+    </article>
   
-    
-    <h3 class="article-title"><a href="/2019/09/10/记录一次使用jpa出现的异常/"><span>记录一次使用jpa出现的异常</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/10/记录一次使用jpa出现的异常/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-10T05:37:00.000Z">
-          2019-09-10
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/10/记录一次使用jpa出现的异常/">记录一次使用jpa出现的异常</a>
+      </h2>
+      <p class="article-date">September 10, 2019</p>
       
-        <p>使用springboot data jpa在数据库查询出结果后将数据返回给前台</p>
-      
-    </div>
+        
+  <a href="/tags#springboot" >
+    <span class="tag-code">springboot</span>
+  </a>
 
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/java/">java</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/springboot/">springboot</a><a href="/tags/jpa/">jpa</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/09/mysql查询语句的书写顺序/"><span>mysql查询语句的书写顺序</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/09/mysql查询语句的书写顺序/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-09T12:11:00.000Z">
-          2019-09-09
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p><code>select</code>-&gt;<code>from</code>-&gt;<code>where</code>-&gt;<code>group by</code>-&gt;<code>having</code>-&gt;<code>order by</code>-&gt;<code>limit</code></p>
+  <a href="/tags#jpa" >
+    <span class="tag-code">jpa</span>
+  </a>
 
       
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/mysql/">mysql</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
+      <div class="article-summary">
+        
+          <p>使用springboot data jpa在数据库查询出结果后将数据返回给前台</p>
+        
+      </div>
+      <a class="more" href="/2019/09/10/记录一次使用jpa出现的异常/">Read more</a>
+    </article>
   
-    
-    <h3 class="article-title"><a href="/2019/09/06/Springboot-Data-JPA-的简单使用/"><span>Springboot Data JPA 的简单使用</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/06/Springboot-Data-JPA-的简单使用/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-06T03:40:00.000Z">
-          2019-09-06
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/09/mysql查询语句的书写顺序/">mysql查询语句的书写顺序</a>
+      </h2>
+      <p class="article-date">September 9, 2019</p>
       
-        <h3 id="spring官网对springboot-data-jpa的描述"><a href="#spring官网对springboot-data-jpa的描述" class="headerlink" title="spring官网对springboot data jpa的描述"></a>spring官网对springboot data jpa的描述</h3><blockquote>
+        
+  <a href="/tags#mysql" >
+    <span class="tag-code">mysql</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          select-&gt;from-&gt;where-&gt;group by-&gt;having-&gt;order by-&gt;limit
+
+        
+      </div>
+      <a class="more" href="/2019/09/09/mysql查询语句的书写顺序/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/06/Springboot-Data-JPA-的简单使用/">Springboot Data JPA 的简单使用</a>
+      </h2>
+      <p class="article-date">September 6, 2019</p>
+      
+        
+  <a href="/tags#springboot" >
+    <span class="tag-code">springboot</span>
+  </a>
+
+  <a href="/tags#jpa" >
+    <span class="tag-code">jpa</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <h3 id="spring官网对springboot-data-jpa的描述"><a href="#spring官网对springboot-data-jpa的描述" class="headerlink" title="spring官网对springboot data jpa的描述"></a>spring官网对springboot data jpa的描述</h3><blockquote>
 <p>Spring Data JPA是更大的Spring Data系列的一部分，可以轻松实现基于JPA的存储库。此模块处理对基于JPA的数据访问层的增强支持。它使构建使用数据访问技术的Spring驱动应用程序变得更加容易。<br>在相当长的一段时间内，实现应用程序的数据访问层一直很麻烦。必须编写太多样板代码来执行简单查询以及执行分页和审计。Spring Data JPA旨在通过减少实际需要的工作量来显着改善数据访问层的实现。作为开发人员，您编写存储库接口，包括自定义查找方法，Spring将自动提供实现</p>
 </blockquote>
+        
+      </div>
+      <a class="more" href="/2019/09/06/Springboot-Data-JPA-的简单使用/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/06/使用javascript发送ajax请求/">使用javascript发送ajax请求</a>
+      </h2>
+      <p class="article-date">September 6, 2019</p>
       
-    </div>
+        
+  <a href="/tags#ajax" >
+    <span class="tag-code">ajax</span>
+  </a>
 
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/springboot/">springboot</a><a href="/tags/jpa/">jpa</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/06/使用javascript发送ajax请求/"><span>使用javascript发送ajax请求</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/06/使用javascript发送ajax请求/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-06T00:42:00.000Z">
-          2019-09-06
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
       
-        <h4 id="使用异步请求的好处"><a href="#使用异步请求的好处" class="headerlink" title="使用异步请求的好处"></a>使用异步请求的好处</h4><ul>
+      <div class="article-summary">
+        
+          <h4 id="使用异步请求的好处"><a href="#使用异步请求的好处" class="headerlink" title="使用异步请求的好处"></a>使用异步请求的好处</h4><ul>
 <li>等待服务器响应的时候可以执行其他的脚本</li>
 <li>当响应就绪后对响应进行处理
+        
+      </div>
+      <a class="more" href="/2019/09/06/使用javascript发送ajax请求/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/06/HTTP状态码详解/">HTTP状态码详解</a>
+      </h2>
+      <p class="article-date">September 6, 2019</p>
       
-    </div>
+        
+  <a href="/tags#http" >
+    <span class="tag-code">http</span>
+  </a>
 
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/ajax/">ajax</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/06/HTTP状态码详解/"><span>HTTP状态码详解</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/06/HTTP状态码详解/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-06T00:41:00.000Z">
-          2019-09-06
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
       
-        <ul>
+      <div class="article-summary">
+        
+          <ul>
 <li><p>1xx:信息响应类，表示接收到请求并且继续处理  </p>
 </li>
 <li><p>2xx:处理成功响应类，表示动作被成功接收、理解和接受  </p>
@@ -371,278 +307,135 @@
 <li><p>4xx:客户端错误，客户请求包含语法错误或者是不能正确执行  </p>
 </li>
 <li><p>5xx:服务端错误，服务器不能正确执行一个正确的请求  </p>
+        
+      </div>
+      <a class="more" href="/2019/09/06/HTTP状态码详解/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/06/vue的组件化/">ubuntu18.04一些常用软件</a>
+      </h2>
+      <p class="article-date">September 6, 2019</p>
       
-    </div>
+        
+  <a href="/tags#ubuntu" >
+    <span class="tag-code">ubuntu</span>
+  </a>
 
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/http/">http</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/06/vue的组件化/"><span>ubuntu18.04一些常用软件</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/06/vue的组件化/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-06T00:30:00.000Z">
-          2019-09-06
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
       
-        <h3 id="首先更新软件源"><a href="#首先更新软件源" class="headerlink" title="首先更新软件源"></a>首先更新软件源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+      <div class="article-summary">
+        
+          <h3 id="首先更新软件源"><a href="#首先更新软件源" class="headerlink" title="首先更新软件源"></a>首先更新软件源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+        
+      </div>
+      <a class="more" href="/2019/09/06/vue的组件化/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/05/解决执行docker命令没有权限/">解决执行docker命令没有权限</a>
+      </h2>
+      <p class="article-date">September 5, 2019</p>
       
-    </div>
+        
+  <a href="/tags#docker" >
+    <span class="tag-code">docker</span>
+  </a>
 
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/ubuntu/">ubuntu</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/05/解决执行docker命令没有权限/"><span>解决执行docker命令没有权限</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/05/解决执行docker命令没有权限/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-05T03:39:00.000Z">
-          2019-09-05
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
       
-        <p>执行docker info的时候报错</p>
+      <div class="article-summary">
+        
+          <p>执行docker info的时候报错</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.39/info: dial unix /var/run/docker.sock: connect: permission denied</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/linux/">linux</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/docker/">docker</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
+        
+      </div>
+      <a class="more" href="/2019/09/05/解决执行docker命令没有权限/">Read more</a>
+    </article>
   
-    
-    <h3 class="article-title"><a href="/2019/09/05/mysql设置编码为utf8/"><span>mysql设置编码为utf8</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/05/mysql设置编码为utf8/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-05T03:37:00.000Z">
-          2019-09-05
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/09/05/mysql设置编码为utf8/">mysql设置编码为utf8</a>
+      </h2>
+      <p class="article-date">September 5, 2019</p>
       
-        <p>mysql安装成功后默认编码为latin1<br>创建数据库的时候如果不指定编码则插入中文内容时会报错<br>所以需要修改mysql的默认编码为utf8</p>
+        
+  <a href="/tags#mysql" >
+    <span class="tag-code">mysql</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>mysql安装成功后默认编码为latin1<br>创建数据库的时候如果不指定编码则插入中文内容时会报错<br>所以需要修改mysql的默认编码为utf8</p>
 <p>具体操作如下</p>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/SQL/">SQL</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/mysql/">mysql</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/05/linux下安装字体/"><span>linux下安装字体</span></a></h3>
-    
+        
+      </div>
+      <a class="more" href="/2019/09/05/mysql设置编码为utf8/">Read more</a>
+    </article>
   
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/05/linux下安装字体/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-05T01:53:49.000Z">
-          2019-09-05
-        </time>
-      </a>
-    </span>
-  </div>
-
-
   
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h4 id="首先将你要安装的字体文件夹复制到user-share-fonts下"><a href="#首先将你要安装的字体文件夹复制到user-share-fonts下" class="headerlink" title="首先将你要安装的字体文件夹复制到user/share/fonts下"></a>首先将你要安装的字体文件夹复制到<code>user/share/fonts下</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -r /xx/xx/win-font /usr/share/fonts/</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-
-<nav class="pagination">
+    <div class="guide-pager">
+  
+    <a class="unvisible" href="/"><span class="page-arrow">←</span> Prev</a>
   
   
-  <a href="/page/2/" class="pagination-next">Next</a>
+    <a href="/page/2/">Next<span class="page-arrow"> →</span></a>
   
-</nav>
-    </main>
+</div>
+  
+</main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2019 LiKaiyu
-    
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
   </p>
 </footer>
-    
-  </div>
-</div>
-</body>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
 </html>
