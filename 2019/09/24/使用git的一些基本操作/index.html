@@ -10,7 +10,7 @@
   
   <title>
     
-      categories | LKY
+      使用git的一些基本操作 | LKY
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -116,8 +116,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>categories</h2>
-  <p class="post-date">2019-09-04</p>
+  <h2>使用git的一些基本操作</h2>
+  <p class="post-date">2019-09-24</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -125,12 +125,83 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"></section>
+    <section class="markdown-content"><p>首先进入到一个目录，在当前目录下初始化本地库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+
+<p>会生成一个隐藏的文件夹,存放本地库的一些相关文件配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置签名信息"><a href="#设置签名信息" class="headerlink" title="设置签名信息"></a>设置签名信息</h3><p>签名信息分两种</p>
+<ol>
+<li><p>项目级别/仓库级别：仅在当前目录的git仓库有效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name likaiyu</span><br><span class="line">$ git config user.email 1695211207@qq.com</span><br><span class="line">签名的信息保存在./.git/config文件中</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>系统用户级别:登录当前操作系统的用户范围</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name mengxuegu_glo</span><br><span class="line">git config --global user.email mengxuegu666@163.com</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="git的基本操作"><a href="#git的基本操作" class="headerlink" title="git的基本操作"></a>git的基本操作</h3><ol>
+<li><p>将工作区的”新建/修改”文件添加到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;文件名称&gt;  --当前目录下的全部文件文件名称为  【.】</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将文件不放在暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached &lt;文件名称&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交到本地仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit [-m &quot;提交的说明信息&quot;] &lt;filename&gt;   -- 不写&lt;filename&gt;就是提交所有暂存区的文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示回滚版本步数日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>前进后退版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset -- hard &lt;局部索引值&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="提交到远程仓库"><a href="#提交到远程仓库" class="headerlink" title="提交到远程仓库"></a>提交到远程仓库</h3><p>1.查看当前所在本地仓库的所有远程地址的别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>创建远程仓库别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add 别名 远程地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>push 推送本地库到远程库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push [远程仓库别名] [分支名]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="克隆远程仓库"><a href="#克隆远程仓库" class="headerlink" title="克隆远程仓库"></a>克隆远程仓库</h3><ol>
+<li>克隆命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git clone [远程仓库地址]</span><br><span class="line"></span><br><span class="line">克隆之后的效果有：</span><br><span class="line">1. 完整的把远程仓库下载到本地</span><br><span class="line">2. 创建远程仓库地址别名 origin</span><br><span class="line">3. 初始化了本地仓库</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</section>
     <!-- Tags START -->
     
     <!-- Tags END -->
     <!-- NAV START -->
     
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/09/24/解决docker容器里面中文乱码的问题/">
+        <span class="nav-arrow">← </span>
+        
+          解决docker容器里面中文乱码的问题
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/09/24/ubuntu下配置jdk的环境变量/">
+        
+          ubuntu下配置jdk的环境变量
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
     <!-- NAV END -->
     <!-- 打赏 START -->
     
@@ -154,7 +225,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#设置签名信息"><span class="toc-nav-text">设置签名信息</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git的基本操作"><span class="toc-nav-text">git的基本操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#提交到远程仓库"><span class="toc-nav-text">提交到远程仓库</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#克隆远程仓库"><span class="toc-nav-text">克隆远程仓库</span></a></li></ol>
     
   </div>
 </aside>
@@ -164,7 +235,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/project/index.html';
+    var url = 'http://yoursite.com/2019/09/24/使用git的一些基本操作/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
