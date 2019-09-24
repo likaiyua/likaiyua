@@ -10,7 +10,7 @@
   
   <title>
     
-      ubuntu下配置jdk的环境变量 | LKY
+      Spring AOP用法 | LKY
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -116,8 +116,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>ubuntu下配置jdk的环境变量</h2>
-  <p class="post-date">2019-09-24</p>
+  <h2>Spring AOP用法</h2>
+  <p class="post-date">2019-09-25</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -125,12 +125,57 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h4 id="找到环境变量，管理员权限打开编辑"><a href="#找到环境变量，管理员权限打开编辑" class="headerlink" title="找到环境变量，管理员权限打开编辑"></a>找到环境变量，管理员权限打开编辑</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+    <section class="markdown-content"><h3 id="Spring-AOP的一些概念"><a href="#Spring-AOP的一些概念" class="headerlink" title="Spring AOP的一些概念"></a>Spring AOP的一些概念</h3><ul>
+<li><p>Aspect（切面）： Aspect包含的是一组pointcut以及对应的Advice</p>
+</li>
+<li><p>Joint point（连接点）：用来定义程序在什么地方能通过AOP加入额外的逻辑</p>
+</li>
+<li><p>Pointcut（切点）：定义了通知要应用的切入点。通常这些pointcut指的是类与方法名。</p>
+</li>
+<li><p>Advice（增强）：Advice 定义了在切入后具体要做的操作，它通过 <code>before</code>、<code>after</code> 和 <code>around</code> 来申明是在目标方法<code>之前</code>、<code>之后</code>、还是<code>环绕</code>执行</p>
+</li>
+<li><p>Target（目标对象）：织入 Advice 的目标对象.。</p>
+</li>
+<li><p>Weaving（织入）：将 Aspect 和其他对象连接起来, 并创建 Adviced object 的过程</p>
+</li>
+</ul>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><ol>
+<li><p>首先导入aop支持的包</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义一个切面类，加上<code>Aspect</code>和<code>Component</code>注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebLogAspect</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写切入点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Pointcut</span>(<span class="string">"@annotation(com.lky.redis.ant.WebLog)"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">webLog</span><span class="params">()</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写切入逻辑</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Before 在切入点后执行 参数：自定义的切入点</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> joinPoint 连接点对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Before</span>(<span class="string">"webLog()"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printLog</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">    *需要执行的代码</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">	System.out.println(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="在末尾加上"><a href="#在末尾加上" class="headerlink" title="在末尾加上"></a>在末尾加上</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#set oracle jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181 #修改为你的jdk解压缩目录</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="切入点表达式语法规则"><a href="#切入点表达式语法规则" class="headerlink" title="切入点表达式语法规则"></a>切入点表达式语法规则</h3><p>这里主要记录两个，<code>execution</code>和<code>@annotation</code><br>execution主要由五个部分组成</p>
+<p>execution主要有五个部分组成,例如 <code>execution (* com.sample.service.impl..*.*(..))</code></p>
+<blockquote>
+<p>execution(): 表达式主体。<br>返回类型   * 表示所有类型<br>描述包名   ..  表示当前包下的所有包以及其子包<br>类名       * 表示所有包下的所有类<br>方法名      * 表示所有方法<br>参数       括号里面的是参数类型， .. 表示所有类型</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*  ： 匹配任何数量字符；</span><br><span class="line">.. ： 匹配任何数量字符的重复，如在类型模式中匹配任何数量子包；而在方法参数模式中匹配任何数量参数。</span><br><span class="line">+  ： 匹配指定类型的子类型；仅能作为后缀放在类型模式后边。</span><br></pre></td></tr></table></figure>
 
-<h4 id="刷新环境变量使其生效"><a href="#刷新环境变量使其生效" class="headerlink" title="刷新环境变量使其生效"></a>刷新环境变量使其生效</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></section>
+</section>
     <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#spring" >
+    <span class="tag-code">spring</span>
+  </a>
+
+  <a href="/tags#aop" >
+    <span class="tag-code">aop</span>
+  </a>
+
+      </div>
     
     <!-- Tags END -->
     <!-- NAV START -->
@@ -138,17 +183,17 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2019/09/24/使用git的一些基本操作/">
+      <a class="nav-left" href="/2019/09/24/ubuntu下配置jdk的环境变量/">
         <span class="nav-arrow">← </span>
         
-          使用git的一些基本操作
+          ubuntu下配置jdk的环境变量
         
       </a>
     
     
-      <a class="nav-right" href="/2019/09/25/Spring-AOP用法/">
+      <a class="nav-right" href="/2019/09/25/使用SpringAOP和自定义注解实现日志记录/">
         
-          Spring AOP用法
+          使用SpringAOP和自定义注解实现日志记录
         
         <span class="nav-arrow"> →</span>
       </a>
@@ -178,7 +223,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#找到环境变量，管理员权限打开编辑"><span class="toc-nav-text">找到环境变量，管理员权限打开编辑</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#在末尾加上"><span class="toc-nav-text">在末尾加上</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#刷新环境变量使其生效"><span class="toc-nav-text">刷新环境变量使其生效</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Spring-AOP的一些概念"><span class="toc-nav-text">Spring AOP的一些概念</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#具体实现"><span class="toc-nav-text">具体实现</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#切入点表达式语法规则"><span class="toc-nav-text">切入点表达式语法规则</span></a></li></ol>
     
   </div>
 </aside>
@@ -188,7 +233,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2019/09/24/ubuntu下配置jdk的环境变量/';
+    var url = 'http://yoursite.com/2019/09/25/Spring-AOP用法/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
