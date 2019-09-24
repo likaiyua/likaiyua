@@ -521,6 +521,8 @@ h2.article-head {
 .article-summary code .line {
   min-height: 13px;
   margin: 2px 0;
+  font-size: 15px;
+  font-family: DejaVu Sans Mono;
 }
 .markdown-content p,
 .article-summary p {
@@ -528,7 +530,7 @@ h2.article-head {
 }
 .markdown-content p code,
 .article-summary p code {
-  background-color: #282c34;
+  background-color: #f8f8f8;
   color: #e96900;
   padding: 3px 5px;
   margin: 0 2px;
@@ -599,12 +601,13 @@ h2.article-head {
 }
 .markdown-content figure,
 .article-summary figure {
-  background: #f8f8f8;
+  background: #282c34;
   padding: 0 10px;
   border-radius: 2px;
   margin: 20px 0;
   overflow: auto;
   position: relative;
+  font-size: 20px;
 }
 .markdown-content figure:after,
 .article-summary figure:after {
