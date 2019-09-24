@@ -10,7 +10,7 @@
   
   <title>
     
-      linux下安装字体 | LKY
+      md编辑器editormd在网页上的集成 | LKY
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -116,8 +116,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>linux下安装字体</h2>
-  <p class="post-date">2019-09-05</p>
+  <h2>md编辑器editormd在网页上的集成</h2>
+  <p class="post-date">2019-09-25</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -125,23 +125,35 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h4 id="首先将你要安装的字体文件夹复制到user-share-fonts下"><a href="#首先将你要安装的字体文件夹复制到user-share-fonts下" class="headerlink" title="首先将你要安装的字体文件夹复制到user/share/fonts下"></a>首先将你要安装的字体文件夹复制到<code>user/share/fonts下</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -r /xx/xx/win-font /usr/share/fonts/</span><br></pre></td></tr></table></figure>
+    <section class="markdown-content"><p>在做网站特别是博客类网站的时候经常会使用到一些富文本编辑器来编写文章，而md编辑器则比传统的富文本编辑器更高效，记录一下在网站里面集成MD编辑器editor</p>
+<h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><p>editormd编辑器是一个网页的插件，项文档地址<a href="https://pandao.github.io/editor.md/" target="_blank" rel="noopener">https://pandao.github.io/editor.md/</a><br>里面也有很详细的介绍</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>直接使用github下载完整文件，然后导入项目中，使用的时候引入本地文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">本地路径修改成自己的</span><br><span class="line">//引入css文件</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/markdown.css&quot;&gt;</span><br><span class="line">//引入js文件</span><br><span class="line">&lt;script src=&quot;editor.md/editormd.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<a id="more"></a>
+<h3 id="放置标签"><a href="#放置标签" class="headerlink" title="放置标签"></a>放置标签</h3><p>然后在网页中放置一个标签，代表插入的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;editor&quot;&gt;</span><br><span class="line">    &lt;textarea style=&quot;display: none;&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
-<h4 id="然后依次执行下面三条命令"><a href="#然后依次执行下面三条命令" class="headerlink" title="然后依次执行下面三条命令"></a>然后依次执行下面三条命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfontscale</span><br><span class="line">sudo mkfontdir</span><br><span class="line">sudo fc-cache -fv</span><br></pre></td></tr></table></figure>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">js代码初始化</span><br><span class="line"></span><br><span class="line">let editor = editormd(&quot;editor&quot;, &#123;</span><br><span class="line">        width: &quot;100%&quot;,</span><br><span class="line">        height: &quot;900&quot;,</span><br><span class="line">        // markdown: &quot;xxxx&quot;,     // dynamic set Markdown text</span><br><span class="line">        path : &quot;editor.md/lib/&quot;  // Autoload modules mode, codemirror, marked... dependents libs path</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>第三条命令会等待一会，耐心等待执行完毕就可以了</p>
-</blockquote>
-<h4 id="最后如果成功了会有一个success的提示"><a href="#最后如果成功了会有一个success的提示" class="headerlink" title="最后如果成功了会有一个success的提示"></a>最后如果成功了会有一个<code>success</code>的提示</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-cache: succeeded</span><br></pre></td></tr></table></figure></section>
+<h3 id="一些常用方法"><a href="#一些常用方法" class="headerlink" title="一些常用方法"></a>一些常用方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">editor.getMarkdown();       // 获取 Markdown 源码</span><br><span class="line"></span><br><span class="line">editor.getHTML();           // 获取 Textarea 保存的 HTML 源码</span><br></pre></td></tr></table></figure>
+
+<p>更多功能的方法在<a href="https://pandao.github.io/editor.md/examples/" target="_blank" rel="noopener">https://pandao.github.io/editor.md/examples/</a> 里面查阅</p>
+</section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#linux" >
-    <span class="tag-code">linux</span>
+  <a href="/tags#md" >
+    <span class="tag-code">md</span>
+  </a>
+
+  <a href="/tags#javascript" >
+    <span class="tag-code">javascript</span>
+  </a>
+
+  <a href="/tags#html" >
+    <span class="tag-code">html</span>
   </a>
 
       </div>
@@ -152,20 +164,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2019/09/04/SpringBoot整合Swagger2/">
+      <a class="nav-left" href="/2019/09/25/java自定义注解/">
         <span class="nav-arrow">← </span>
         
-          SpringBoot整合Swagger2
+          JAVA自定义注解
         
       </a>
     
-    
-      <a class="nav-right" href="/2019/09/05/解决执行docker命令没有权限/">
-        
-          解决执行docker命令没有权限
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -192,7 +197,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#首先将你要安装的字体文件夹复制到user-share-fonts下"><span class="toc-nav-text">首先将你要安装的字体文件夹复制到user/share/fonts下</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#然后依次执行下面三条命令"><span class="toc-nav-text">然后依次执行下面三条命令</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#最后如果成功了会有一个success的提示"><span class="toc-nav-text">最后如果成功了会有一个success的提示</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#项目地址"><span class="toc-nav-text">项目地址</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#下载"><span class="toc-nav-text">下载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#放置标签"><span class="toc-nav-text">放置标签</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化"><span class="toc-nav-text">初始化</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#一些常用方法"><span class="toc-nav-text">一些常用方法</span></a></li></ol>
     
   </div>
 </aside>
@@ -202,7 +207,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2019/09/05/linux下安装字体/';
+    var url = 'http://yoursite.com/2019/09/25/md编辑器editormd在网页上的集成/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
