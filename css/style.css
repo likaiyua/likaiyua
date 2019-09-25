@@ -496,6 +496,10 @@ h2.article-head {
 .unvisible {
   visibility: hidden;
 }
+@font-face {
+  font-family: 'consola';
+  src: url("../fonts/CONSOLA.TTF");
+}
 .markdown-content,
 .article-summary {
   overflow-y: auto;
@@ -523,7 +527,7 @@ h2.article-head {
   min-height: 13px;
   margin: 2px 0;
   font-size: 15px;
-  font-family: DejaVu Sans Mono;
+  font-family: consola;
 }
 .markdown-content p,
 .article-summary p {
