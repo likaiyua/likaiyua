@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      使用JWT来实现身份验证 | LKY
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>LKY</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>使用JWT来实现身份验证</h2>
+  <p class="post-date">2019-09-25</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h3 id="JWT的应用场景"><a href="#JWT的应用场景" class="headerlink" title="JWT的应用场景"></a>JWT的应用场景</h3><p>传统架构进行身份验证流程一般都是用户输入账号密码然后发送请求登录，服务器验证成功之后保存所需数据在当前会话（session）中，然后将sessionid保存在前端的cookie中，用户每次请求的时候服务器校验cookie中的sessionid来获取session确认身份信息。<br>这样做的缺点是，不好横向扩展，如果项目是使用分布式架构，session很难共享，需要搭建一个session数据库来保存会话数据实现共享，这样每台服务器才能验证用户的身份信息。且会话信息是保存在服务器里面的，用户多了以后占用服务器内存严重<br>这时候就可以采用JWT来实现用户身份的验证</p>
+<h3 id="JWT的原理"><a href="#JWT的原理" class="headerlink" title="JWT的原理"></a>JWT的原理</h3><p>JWT是一种规范，<a href="https://jwt.io/" target="_blank" rel="noopener">官网</a><br>JWT的原则是在服务器身份验证之后，将信息生成一个token令牌（JSON对象）并将其发送回前端,前端可以保存下来，并且在每次请求的时候携带。<br>服务器则可以接收令牌并进行身份验证，所以服务器仅依赖于这个JSON对象来标识用户。为了防止用户篡改数据，服务器将在生成对象时添加签名。<br>服务器不保存任何会话数据，即服务器变为无状态，使其更容易扩展。</p>
+<h3 id="JWT的结构"><a href="#JWT的结构" class="headerlink" title="JWT的结构"></a>JWT的结构</h3><p>JWT分为三部分<br><img src="/images/pasted-1.png" alt="upload successful"></p>
+<p><strong>头部</strong>： 存储JWT的元数据，比如算法信息和令牌类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;alg&quot;: &quot;HS256&quot;,</span><br><span class="line">&quot;typ&quot;: &quot;JWT&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>alg：签名所用算法<br>typ：token的类型<br>最后，使用Base64 URL算法将上述JSON对象转换为字符串保存。</p>
+<hr>
+<p><strong>中间部分</strong>: 有效载荷（储存用户自定义的信息）</p>
+<p>也是一个json对象，储存需要传递的数据，JWT默认有七个字段供选择</p>
+<blockquote>
+<p>iss：发行人<br>exp：到期时间<br>sub：主题<br>aud：用户<br>nbf：在此之前不可用<br>iat：发布时间<br>jti：JWT ID用于标识该JWT<br>除了上面七个字段外，还可以加入自定义的信息</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;amdin&quot;:&quot;true&quot;,</span><br><span class="line">&quot;username&quot;:&quot;1695211207&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样，也是使用Base64 URL算法转化为字符串进行保存，可以很容易获取里面的信息，所以不要保存重要信息在这里。</p>
+<hr>
+<p><strong>尾部</strong>：算法哈希<br>使用指定的算法对前面两个部分的数据进行签名，获得哈希值，以确保数据不会被篡改</p>
+<p>用户需要指定一个<code>秘钥</code>（secret）仅保存在服务端，不能向用户公开。然后使用标头中指定的签名算法（默认情况下为HMAC SHA256）根据以下公式生成签名<br>HMACSHA256(base64UrlEncode(header) + “.” + base64UrlEncode(payload),secret)</p>
+<hr>
+<p>在计算出哈希签名后，<code>JWT头</code>，<code>有效载荷</code>，<code>签名哈希值</code> 三个部分组成一个JWT令牌，每个部分用<code>.</code>隔开，这样就构成了JWT的整个对象</p>
+<h3 id="JAVA代码实现"><a href="#JAVA代码实现" class="headerlink" title="JAVA代码实现"></a>JAVA代码实现</h3><h4 id="导入jwt实现依赖"><a href="#导入jwt实现依赖" class="headerlink" title="导入jwt实现依赖"></a>导入jwt实现依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;jjwt&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.9.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="编写JWT工具类"><a href="#编写JWT工具类" class="headerlink" title="编写JWT工具类"></a>编写JWT工具类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class JwtTokenProvider &#123;</span><br><span class="line"></span><br><span class="line">    /*秘钥*/</span><br><span class="line">    private SecretKeySpec key;</span><br><span class="line"></span><br><span class="line">    public JwtTokenProvider(String key) &#123;</span><br><span class="line"></span><br><span class="line">        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), SignatureAlgorithm.HS256.getJcaName());</span><br><span class="line"></span><br><span class="line">        this.key = secretKeySpec;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 生成token</span><br><span class="line">     */</span><br><span class="line">    public String createToken(Claims claims)&#123;</span><br><span class="line"></span><br><span class="line">        String compact = Jwts.builder().setClaims(claims).compressWith(CompressionCodecs.DEFLATE).</span><br><span class="line">                signWith(SignatureAlgorithm.HS256, key).compact();</span><br><span class="line"></span><br><span class="line">        return compact;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*解析token*/</span><br><span class="line">    public Claims parseToken(String token)&#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在创建<code>JwtTokenProvider</code>对象的时候要传入加密的<code>秘钥</code></p>
+<h4 id="登录请求控制器"><a href="#登录请求控制器" class="headerlink" title="登录请求控制器"></a>登录请求控制器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class loginController &#123;</span><br><span class="line"></span><br><span class="line">    JwtTokenProvider jwtTokenProvider = new JwtTokenProvider(Encryption.SALT);</span><br><span class="line"></span><br><span class="line">    @PostMapping(&quot;/login&quot;)</span><br><span class="line">    public String login(String id,String pwd)&#123;</span><br><span class="line">		/*使用内置账号密码模拟数据库查询出来的数据*/</span><br><span class="line">        if (&quot;likaiyu&quot;.equals(id) &amp;&amp; &quot;123&quot;.equals(pwd))&#123;</span><br><span class="line"></span><br><span class="line">            /*保存用户自定义的信息*/</span><br><span class="line">            Claims claims = new DefaultClaims();</span><br><span class="line">			</span><br><span class="line">            claims.put(&quot;userName&quot;,&quot;likaiyu&quot;);</span><br><span class="line"></span><br><span class="line">            /*创建一个token*/</span><br><span class="line">            String token = jwtTokenProvider.createToken(claims);</span><br><span class="line">            </span><br><span class="line">            /*打印*/</span><br><span class="line">            System.out.println(token);</span><br><span class="line">            </span><br><span class="line">			/*登录成功，返回token*/</span><br><span class="line">            return token;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>使用postman对接口进行测试</p>
+<p><img src="/images/pasted-2.png" alt="upload successful"></p>
+<p>可以看到，下面有返回的token信息。<br>控制台上也打印了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNqqViotTi3yS8xNVbJSysnMTsysLFWqBQAAAP__.61d2zMEwnZfS1EgkvKdclDGUhedE3V1OKgdzWP4wRnM</span><br></pre></td></tr></table></figure>
+
+<p>前端这时候就可以将token保存下来，后面请求的时候可以将token放在请求头中携带过去</p>
+<h3 id="后台接收token"><a href="#后台接收token" class="headerlink" title="后台接收token"></a>后台接收token</h3><h4 id="发送请求数据"><a href="#发送请求数据" class="headerlink" title="发送请求数据"></a>发送请求数据</h4><p>使用postman，将token放在请求头中给后台发送请求</p>
+<p><img src="/images/pasted-3.png" alt="upload successful"></p>
+<h4 id="后台接口"><a href="#后台接口" class="headerlink" title="后台接口"></a>后台接口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class DataController &#123;</span><br><span class="line"></span><br><span class="line">    JwtTokenProvider jwtTokenProvider = new JwtTokenProvider(Encryption.SALT);</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;/list&quot;)</span><br><span class="line">    public String getList(@RequestHeader(&quot;jwt-token&quot;) String token)&#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            /*解析token*/</span><br><span class="line">            Claims claims = jwtTokenProvider.parseToken(token);</span><br><span class="line"></span><br><span class="line">            String userName = claims.get(&quot;userName&quot;).toString();</span><br><span class="line">            </span><br><span class="line">            /*打印解析出来的用户名信息*/</span><br><span class="line">            System.out.println(userName);</span><br><span class="line"></span><br><span class="line">            return &quot;success!&quot;+userName;</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return &quot;erro: &quot;+e.getMessage();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>springboot使用<code>@RequestHeader</code>注解来将对应的请求头绑定到<code>token</code>参数中，<br>成功接收到token后，使用<code>jwtTokenProvider</code>工具类来对接收到的token进行解析获取用户名，<br>控制打印信息成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">likaiyu</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>判断token的合法性，即有没有被篡改可以使用过滤器或者AOP来进行判断</p>
+</blockquote>
+<p>简单实现在<a href="https://gitee.com/lkyQ/jwt-demo" target="_blank" rel="noopener">码云仓库</a></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#JWT" >
+    <span class="tag-code">JWT</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/09/25/md编辑器editormd在网页上的集成/">
+        <span class="nav-arrow">← </span>
+        
+          md编辑器editormd在网页上的集成
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JWT的应用场景"><span class="toc-nav-text">JWT的应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JWT的原理"><span class="toc-nav-text">JWT的原理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JWT的结构"><span class="toc-nav-text">JWT的结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JAVA代码实现"><span class="toc-nav-text">JAVA代码实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#导入jwt实现依赖"><span class="toc-nav-text">导入jwt实现依赖</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#编写JWT工具类"><span class="toc-nav-text">编写JWT工具类</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#登录请求控制器"><span class="toc-nav-text">登录请求控制器</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#测试"><span class="toc-nav-text">测试</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#后台接收token"><span class="toc-nav-text">后台接收token</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#发送请求数据"><span class="toc-nav-text">发送请求数据</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#后台接口"><span class="toc-nav-text">后台接口</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/09/25/使用JWT来实现身份验证/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
