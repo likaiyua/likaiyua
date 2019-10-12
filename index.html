@@ -119,6 +119,59 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2019/10/09/docker容器开启自启动/">docker容器开启自启动</a>
+      </h2>
+      <p class="article-date">October 9, 2019</p>
+      
+        
+  <a href="/tags#docker" >
+    <span class="tag-code">docker</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          docker创建容器的时候默认是关机后不会自动启动，这时候为了方便就需要设置一下
+使用 --restart=always
+1docker run -id --restart=always --name redis xxx
+
+
+–restart具体参数值详细信息
+
+
+no - 容器退出时，不重 ...
+        
+      </div>
+      <a class="more" href="/2019/10/09/docker容器开启自启动/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/10/01/springbootjpa一对多、多对多、多对一的注解关系概述/">springbootjpa一对多、多对多、多对一的注解关系概述</a>
+      </h2>
+      <p class="article-date">October 1, 2019</p>
+      
+        
+  <a href="/tags#springboot" >
+    <span class="tag-code">springboot</span>
+  </a>
+
+  <a href="/tags#jpa" >
+    <span class="tag-code">jpa</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          在使用实现jpa接口的工具（springboot data jpa和hibernate）操作数据库的时候，如果设计到关联操作就需要用到注解来建立两个实体之间的关系，两个实体之间的关系以及注解如下
+注解类型12345@OneToMany    --一对多@OneToOne     --一对第一 ...
+        
+      </div>
+      <a class="more" href="/2019/10/01/springbootjpa一对多、多对多、多对一的注解关系概述/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2019/09/30/使用vue-cli来初始化vue项目/">使用vue-cli来初始化vue项目</a>
       </h2>
       <p class="article-date">September 30, 2019</p>
@@ -305,56 +358,6 @@ Pointcut（切点）：定义了通知要应用的切入点。通常这些pointc
         
       </div>
       <a class="more" href="/2019/09/24/ubuntu下配置jdk的环境变量/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2019/09/24/使用git的一些基本操作/">使用git的一些基本操作</a>
-      </h2>
-      <p class="article-date">September 24, 2019</p>
-      
-      <div class="article-summary">
-        
-          首先进入到一个目录，在当前目录下初始化本地库
-1$ git init
-
-会生成一个隐藏的文件夹,存放本地库的一些相关文件配置
-1.git
-
-设置签名信息签名信息分两种
-
-项目级别/仓库级别：仅在当前目录的git仓库有效
-123$ git config user.name likaiyu$ g ...
-        
-      </div>
-      <a class="more" href="/2019/09/24/使用git的一些基本操作/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2019/09/24/解决docker容器里面中文乱码的问题/">解决docker容器里面中文乱码的问题</a>
-      </h2>
-      <p class="article-date">September 24, 2019</p>
-      
-        
-  <a href="/tags#dockfile" >
-    <span class="tag-code">dockfile</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          本篇文档解决了使用docker创建容器的时候中文乱码的问题碰到的地方
-
-jdk —基础镜像是centos 
-mysql —基础镜像是debian   
-基础镜像是centos或者debian的应该都会碰到这个问题
-
-首先进入到镜像里面
-1docker exec -it lky_mysql / ...
-        
-      </div>
-      <a class="more" href="/2019/09/24/解决docker容器里面中文乱码的问题/">Read more</a>
     </article>
   
 

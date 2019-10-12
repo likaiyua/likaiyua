@@ -10,7 +10,7 @@
   
   <title>
     
-      使用vue-cli来初始化vue项目 | LKY
+      docker容器开启自启动 | LKY
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -116,8 +116,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>使用vue-cli来初始化vue项目</h2>
-  <p class="post-date">2019-09-30</p>
+  <h2>docker容器开启自启动</h2>
+  <p class="post-date">2019-10-09</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -125,43 +125,27 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>首先安装<code>vue-cli</code>之前确保自己已经安装了nodejs和npm</p>
-<h3 id="初始化工程"><a href="#初始化工程" class="headerlink" title="初始化工程"></a>初始化工程</h3><h4 id="安装vue-cli"><a href="#安装vue-cli" class="headerlink" title="安装vue-cli"></a>安装vue-cli</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @vue/cli -g</span><br></pre></td></tr></table></figure>
+    <section class="markdown-content"><p>docker创建容器的时候默认是关机后不会自动启动，这时候为了方便就需要设置一下</p>
+<p>使用 <code>--restart=always</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -id --restart=always --name redis xxx</span><br></pre></td></tr></table></figure>
 
-<h4 id="创建vue-cli工程"><a href="#创建vue-cli工程" class="headerlink" title="创建vue-cli工程"></a>创建vue-cli工程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create my-project</span><br></pre></td></tr></table></figure>
-
-<p>创建vue-cli项目的时候，项目名不要使用驼峰命名法，不然会报错，推荐单词中间添加下划线或者横线</p>
-<h4 id="选择配置"><a href="#选择配置" class="headerlink" title="选择配置"></a>选择配置</h4><p>初始化的时候会提示你做一些配置，选择默认配置</p>
-<p><img src="/images/pasted-7.png" alt="upload successful"></p>
-<p>然后回车之后就会开始构建项目了</p>
-<p><img src="/images/pasted-5.png" alt="upload successful"><br>看到这张图片代表构建成功</p>
-<h3 id="引入vue路由"><a href="#引入vue路由" class="headerlink" title="引入vue路由"></a>引入vue路由</h3><h4 id="安装vue-router"><a href="#安装vue-router" class="headerlink" title="安装vue-router"></a>安装vue-router</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i vue-router --savae</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>在src目录下创建router.js文件，写入</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line"></span><br><span class="line">    routes:[</span><br><span class="line">	<span class="comment">/*存放路由配置对象*/</span></span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>在main.js中导入创建的router.js文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">"./router"</span>;</span><br></pre></td></tr></table></figure>
-
-<p>添加<code>router</code>属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="引入axios"><a href="#引入axios" class="headerlink" title="引入axios"></a>引入axios</h3><p>安装axios</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install axios --save</span><br></pre></td></tr></table></figure>
-
-<p>安装qs,序列化参数的工具</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i qs</span><br></pre></td></tr></table></figure>
-
-<h3 id="添加element-ui"><a href="#添加element-ui" class="headerlink" title="添加element-ui"></a>添加element-ui</h3><p>element-ui是饿了么制作的一款ui组件，可以在vue上使用</p>
-<p>进入项目目录，然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue add element</span><br></pre></td></tr></table></figure></section>
+<blockquote>
+<p>–restart具体参数值详细信息</p>
+</blockquote>
+<ul>
+<li>no - 容器退出时，不重启容器  </li>
+<li>on-failure - 只有在非0状态退出时才从新启动容器  </li>
+<li>always - 无论退出状态是如何，都重启容器  </li>
+</ul>
+<p>如果容器已经创建，那么也可以使用update命令来重新设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker update --restart=always xxx</span><br></pre></td></tr></table></figure></section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#vue" >
-    <span class="tag-code">vue</span>
+  <a href="/tags#docker" >
+    <span class="tag-code">docker</span>
   </a>
 
       </div>
@@ -172,20 +156,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2019/09/25/使用JWT来实现身份验证/">
+      <a class="nav-left" href="/2019/10/01/springbootjpa一对多、多对多、多对一的注解关系概述/">
         <span class="nav-arrow">← </span>
-        
-          使用JWT来实现身份验证
-        
-      </a>
-    
-    
-      <a class="nav-right" href="/2019/10/01/springbootjpa一对多、多对多、多对一的注解关系概述/">
         
           springbootjpa一对多、多对多、多对一的注解关系概述
         
-        <span class="nav-arrow"> →</span>
       </a>
+    
     
   </div>
 
@@ -212,7 +189,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化工程"><span class="toc-nav-text">初始化工程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#安装vue-cli"><span class="toc-nav-text">安装vue-cli</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#创建vue-cli工程"><span class="toc-nav-text">创建vue-cli工程</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#选择配置"><span class="toc-nav-text">选择配置</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入vue路由"><span class="toc-nav-text">引入vue路由</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#安装vue-router"><span class="toc-nav-text">安装vue-router</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#配置"><span class="toc-nav-text">配置</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入axios"><span class="toc-nav-text">引入axios</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#添加element-ui"><span class="toc-nav-text">添加element-ui</span></a></li></ol>
+      <ol class="nav">none</ol>
     
   </div>
 </aside>
@@ -222,7 +199,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2019/09/30/使用vue-cli来初始化vue项目/';
+    var url = 'http://yoursite.com/2019/10/09/docker容器开启自启动/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
