@@ -141,7 +141,7 @@
 <blockquote>
 <p>RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件（亦称面向消息的中间件）。RabbitMQ  服务器是用Erlang语言编写的，而集群和故障转移是构建在开放电信平台框架上的。所有主要的编程语言均有&gt;与代理接口通讯的客户端库。</p>
 </blockquote>
-<h3 id="安装RabbitMQ"><a href="#安装RabbitMQ" class="headerlink" title="安装RabbitMQ"></a>安装RabbitMQ</h3><p>这里直接使用的docke进行安装,首先拉取RabbitMQ的镜像</p>
+<h3 id="安装RabbitMQ"><a href="#安装RabbitMQ" class="headerlink" title="安装RabbitMQ"></a>安装RabbitMQ</h3><p>这里直接使用的docker进行安装,首先拉取RabbitMQ的镜像</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull rabbitmq</span><br></pre></td></tr></table></figure>
 
 <p>创建出RabbitMQ的容器<br>这里映射两个端口号，一个是连接rabbitmq的端口，一个是登录rabbitmq的控制台</p>
@@ -156,7 +156,7 @@
 <p>接下来使用命令开启网页版控制台</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abbitmq-plugins.bat enable rabbitmq_management</span><br></pre></td></tr></table></figure>
 
-<p><strong>tip: 以上两条命令如果不是docker容器则需要进入到安装目录的bin目录下制定对应的命令</strong></p>
+<p><strong>tip: 以上两条命令如果不是docker容器则需要进入到安装目录的bin目录下指定对应的命令</strong></p>
 <hr>
 <h4 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h4><ol>
 <li>安装好控制台后，在网页上打开<a href="localhost:15672" target="_blank" rel="noopener">localhost:15672</a>，就可以看到控制台的登录界面，如下</li>
